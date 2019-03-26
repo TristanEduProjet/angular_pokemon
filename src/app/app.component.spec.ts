@@ -14,22 +14,22 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
+  test('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'PokemonBattle'`, () => {
+  test(`should have as title 'PokemonBattle'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('PokemonBattle');
+    expect(app.title).toEqual('Pokemon Battle');
   });
 
-  it('should render title in a h1 tag', () => {
+  test('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to PokemonBattle!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to Pokemon Battle!');
   });
 });
