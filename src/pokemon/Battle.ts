@@ -19,12 +19,23 @@ export class Battle {
   round() {
     if(this.priority(this.redPokemon, this.bluePokemon) === this.redPokemon) {
       this.redPokemon.throwAttack(this.bluePokemon);
-      this.bluePokemon.throwAttack(this.redPokemon);
+      if(this.bluePokemon.health_point > 0)
+        this.bluePokemon.throwAttack(this.redPokemon);
     }
     else {
       this.bluePokemon.throwAttack(this.redPokemon);
-      this.redPokemon.throwAttack(this.bluePokemon);
+      if(this.redPokemon.health_point > 0)
+        this.redPokemon.throwAttack(this.bluePokemon);
     }
     this.roundCounter++;
+  }
+
+  fight() {
+    while(this.redPokemon.health_point > 0 && this.bluePokemon.health_point > 0) {
+      this.round();
+    }
+    this.winner = this.redPokemon.health_point > 0 ? this.redPokemon : this.bluePokemon;
+    console.log(this.winner.name + ' est le gagnant !');
+    return this.winner;
   }
 }
