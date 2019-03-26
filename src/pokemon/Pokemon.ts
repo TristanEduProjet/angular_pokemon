@@ -1,6 +1,6 @@
 import {Attaque} from './Move';
 export class Pokemon {
-  constructor(public name: string,public health_point: number,public speed: number,public attaque: Attaque,public type: Type) {}
+  constructor(public name: string, public health_point: number, public speed: number, public attaque: Attaque, public type: Type) {}
 }
 
 interface IPokemon {

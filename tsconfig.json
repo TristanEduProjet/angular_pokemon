@@ -20,7 +20,7 @@
     ],
     "paths": {
       "@core/*": ["src/app/core/*"],
-      "@state/*": ["src/app/state/*"] //import { User } from '@state/user/user.model'
+      "@state/*": ["src/app/state/*"]
     }
   }
 }
