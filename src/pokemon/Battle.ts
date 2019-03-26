@@ -5,11 +5,14 @@ export class Battle {
   public bluePokemon: Pokemon;
   public redPokemon: Pokemon;
   public winner: Pokemon;
+  public isPaused: boolean;
+  public currentPokemons: Pokemon[];
 
   constructor(redPokemon: Pokemon, bluePokemon: Pokemon) {
       this.roundCounter = 0;
       this.redPokemon = redPokemon;
       this.bluePokemon = bluePokemon;
+      this.isPaused = false;
   }
 
   priority(firstPokemon: Pokemon, secondPokemon: Pokemon) {
@@ -33,9 +36,21 @@ export class Battle {
   fight() {
     while(this.redPokemon.health_point > 0 && this.bluePokemon.health_point > 0) {
       this.round();
+      if(this.isPaused) {
+        break;
+      }
     }
     this.winner = this.redPokemon.health_point > 0 ? this.redPokemon : this.bluePokemon;
     console.log(this.winner.name + ' est le gagnant !');
     return this.winner;
+  }
+
+  pause() {
+    this.isPaused = true;
+  }
+
+  resume() {
+    this.isPaused = false;
+    this.fight();
   }
 }
