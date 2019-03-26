@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Pokemon Battle';
+
+  constructor() {
+    //TODO lancer le combat ici
+  }
 }
