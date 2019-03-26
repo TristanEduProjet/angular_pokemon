@@ -13,4 +13,8 @@ export class Battle {
   function priority(firstPokemon: Pokemon, secondPokemon: Pokemon) {
     return firstPokemon.speed > secondPokemon.speed ? firstPokemon : secondPokemon;
   }
+
+  function round() {
+    
+  }
 }
