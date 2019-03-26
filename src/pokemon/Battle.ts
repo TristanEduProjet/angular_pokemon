@@ -1,3 +1,5 @@
+import {Pokemon} from './Pokemon';
+
 export class Battle {
   public round: number;
   public bluePokemon: Pokemon;
@@ -10,18 +12,18 @@ export class Battle {
       this.bluePokemon = bluePokemon;
   }
 
-  function priority(firstPokemon: Pokemon, secondPokemon: Pokemon) {
+  priority(firstPokemon: Pokemon, secondPokemon: Pokemon) {
     return firstPokemon.speed > secondPokemon.speed ? firstPokemon : secondPokemon;
   }
 
-  function round() {
-    if(priority(redPokemon, bluePokemon) === redPokemon) {
-      redPokemon.throwAtack(bluePokemon);
-      bluePokemon.throwAtack(redPokemon);
+  round() {
+    if(this.priority(this.redPokemon, this.bluePokemon) === this.redPokemon) {
+      this.redPokemon.throwAtack(this.bluePokemon);
+      this.bluePokemon.throwAtack(this.redPokemon);
     }
     else {
-      bluePokemon.throwAtack(redPokemon);
-      redPokemon.throwAtack(bluePokemon);
+      this.bluePokemon.throwAtack(this.redPokemon);
+      this.redPokemon.throwAtack(this.bluePokemon);
     }
     this.round++;
   }
