@@ -3,13 +3,19 @@ import {Pokemon} from './Pokemon';
 
 export class Move {
   public dommage: number;
-    constructor(public name: string, public initial_accuracy: number, public type: Type) {
+  public type: Type;
+    constructor(public name: string, public initial_accuracy: number, public type_string: string) {
+      let carotte = type_string.toUpperCase();
+      this.type = Type[carotte];
       this.dommage = 0;
     }
 }
 
 export class Attack {
-    constructor(public name: string, public initial_accuracy: number, public type: Type, public dommage: number) {
+  public type: Type;
+    constructor(public name: string, public initial_accuracy: number, public type_string: string, public dommage: number) {
+      let carotte = type_string.toUpperCase();
+      this.type = Type[carotte];
     }
 }
 
