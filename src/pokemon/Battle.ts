@@ -33,7 +33,7 @@ export class Battle {
     if(this.redPokemon.health_point > 0 && this.bluePokemon.health_point > 0) {
       this.round().then(() => {
         if(this.isPaused) {
-          return;
+          return null;
         }
         this.fight();
       });

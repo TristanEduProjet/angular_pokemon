@@ -11,7 +11,7 @@ describe('BattleTest', () => {
     let pika = new Pokemon('pikapika', 70, 50, eclair, Type.ELECTRIQUE);
 
     let battle = new Battle(dracofeu, pika);
-    let winner = battle.fight();
+    let winner = battle.fight().;
 
     expect(winner).toBe(dracofeu);
   });
