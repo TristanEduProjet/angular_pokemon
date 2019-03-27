@@ -21,14 +21,10 @@ export class Battle {
 
   round() {
     if(this.priority(this.redPokemon, this.bluePokemon) === this.redPokemon) {
-      this.redPokemon.throwAttack(this.bluePokemon);
-      if(this.bluePokemon.health_point > 0)
-        this.bluePokemon.throwAttack(this.redPokemon);
+      this.attackTrade(this.redPokemon, this.bluePokemon);
     }
     else {
-      this.bluePokemon.throwAttack(this.redPokemon);
-      if(this.redPokemon.health_point > 0)
-        this.redPokemon.throwAttack(this.bluePokemon);
+      this.attackTrade(this.bluePokemon, this.redPokemon);
     }
     this.roundCounter++;
   }
@@ -52,5 +48,14 @@ export class Battle {
   resume() {
     this.isPaused = false;
     this.fight();
+  }
+
+  attackTrade(firstPokemon: Pokemon, secondPokemon: Pokemon) {
+    firstPokemon.throwAttack(secondPokemon);
+    if(secondPokemon.health_point > 0) {
+      setTimeout(function(){
+        secondPokemon.throwAttack(firstPokemon);
+      }, 1000);
+    }
   }
 }
