@@ -11,8 +11,9 @@ describe('BattleTest', () => {
     let pika = new Pokemon('pikapika', 70, 50, eclair, Type.ELECTRIQUE);
 
     let battle = new Battle(dracofeu, pika);
+    let winner = battle.fight();
 
-    expect(battle.fight()).toBe(dracofeu);
+    expect(winner).toBe(dracofeu);
   });
 
   test('Pause method should set isPaused to true', () => {
@@ -58,9 +59,11 @@ describe('BattleTest', () => {
     let pika = new Pokemon('pikapika', 70, 50, eclair, Type.ELECTRIQUE);
 
     let battle = new Battle(dracofeu, pika);
-    battle.attackTrade(pika,dracofeu);
 
-    expect(dracofeu.health_point,pika.health_point).toBe(85,40);
+    battle.attackTrade(pika,dracofeu);
+    let expectedHealth = [pika.health_point, dracofeu.health_point];
+
+    expect(expectedHealth).toEqual([40,85]);
   });
 
 })
