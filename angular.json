@@ -20,7 +20,8 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              { "glob": "*[0-9].*", "input": "./node_modules/oakdex-pokedex-sprites/icons/", "output": "/assets/pokemons/" }
             ],
             "styles": [
               "src/styles.css"

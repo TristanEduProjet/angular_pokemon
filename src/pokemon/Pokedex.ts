@@ -8,11 +8,15 @@ export class Pokedex {
 
     static getAllGenOne() {
         console.log(findGeneration('Generation I').dex_name);
-        return /*this.pokedex.*/allPokemon({ dex: findGeneration('Generation I').dex_name.slice(0, -3) }).map(p => ({
-            id: p.national_id,
-            name: p.names.fr || p.names.en,
-            img: './assets/gtk-missing-image.png'
-        }));
+        return /*this.pokedex.*/allPokemon({ dex: findGeneration('Generation I').dex_name.slice(0, -3) }).map(p => {
+            const _id = (p.national_id || 0).toString().padStart(3, '0');
+            console.log(_id);
+            return {
+                id: _id,
+                name: p.names.fr || p.names.en,
+                // img: 'assets/pokemons/' + String(_id) + '.png' || './assets/gtk-missing-image.png'
+            };
+        });
     }
 
     static getPokemonFromId(id: number) {
