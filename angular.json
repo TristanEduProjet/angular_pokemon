@@ -26,7 +26,13 @@
               "src/styles.css"
             ],
             "scripts": [],
-            "es5BrowserSupport": true
+            "es5BrowserSupport": true,
+            "showCircularDependencies": true,
+            "extractCss": true,
+            "deleteOutputPath": true,
+            "vendorChunk": true,
+            "vendorSourceMap": true,
+            "sourceMap": true
           },
           "configurations": {
             "production": {
