@@ -26,7 +26,7 @@ export class Pokedex {
           const move = findMove(ln.move);
           return new Attack(move.names.fr, 0, move.type, move.power);
         }));
-        return new Pokemon(tmp.names.fr || tmp.names.en, tmp.base_stats.hp, tmp.base_stats.speed, moves, null);
+        return new Pokemon(tmp.names.fr || tmp.names.en, tmp.base_stats.hp, tmp.base_stats.speed, moves, "Normal");
         // .abilities{name hidden*} .move_learnsets[{games learnset[{move level* tm* egg_move*}]}] .types[]
     }
 

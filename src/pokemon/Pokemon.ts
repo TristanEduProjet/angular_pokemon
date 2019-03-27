@@ -10,8 +10,9 @@ export class Pokemon {
   throwAttack(pokemon_targeted: Pokemon):Promise<any> {
     let prom = (resolve: any, reject: any)  => {
       setTimeout(() => {
-        pokemon_targeted.health_point-=this.abilities[0].dommage;
-        console.log(this.name + ' attaque ' + pokemon_targeted.name);
+        let randInt = Math.floor(Math.random() * this.abilities.length);
+        pokemon_targeted.health_point-=this.abilities[randInt].dommage;
+        console.log(this.name + ' attaque ' + pokemon_targeted.name + ' avec ' + this.abilities[randInt].name);
         console.log('Il reste ' + pokemon_targeted.health_point + ' a ' + pokemon_targeted.name);
         resolve();
       }, 1500);
