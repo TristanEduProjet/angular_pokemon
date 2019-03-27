@@ -19,26 +19,30 @@ export class Battle {
     return firstPokemon.speed > secondPokemon.speed ? firstPokemon : secondPokemon;
   }
 
-  round() {
+  round():Promise<any> {
+    this.roundCounter++;
     if(this.priority(this.redPokemon, this.bluePokemon) === this.redPokemon) {
-      this.attackTrade(this.redPokemon, this.bluePokemon);
+      return this.attackTrade(this.redPokemon, this.bluePokemon);
     }
     else {
-      this.attackTrade(this.bluePokemon, this.redPokemon);
+      return this.attackTrade(this.bluePokemon, this.redPokemon);
     }
-    this.roundCounter++;
   }
 
-  fight() {
-    while(this.redPokemon.health_point > 0 && this.bluePokemon.health_point > 0) {
-      this.round();
-      if(this.isPaused) {
-        break;
-      }
+  fight():Pokemon {
+    if(this.redPokemon.health_point > 0 && this.bluePokemon.health_point > 0) {
+      this.round().then(() => {
+        if(this.isPaused) {
+          return;
+        }
+        this.fight();
+      });
     }
-    this.winner = this.redPokemon.health_point > 0 ? this.redPokemon : this.bluePokemon;
-    console.log(this.winner.name + ' est le gagnant !');
-    return this.winner;
+    else {
+      this.winner = this.redPokemon.health_point > 0 ? this.redPokemon : this.bluePokemon;
+      console.log(this.winner.name + ' est le gagnant !');
+      return this.winner;
+    }
   }
 
   pause() {
@@ -50,12 +54,11 @@ export class Battle {
     this.fight();
   }
 
-  attackTrade(firstPokemon: Pokemon, secondPokemon: Pokemon) {
-    firstPokemon.throwAttack(secondPokemon);
-    if(secondPokemon.health_point > 0) {
-      setTimeout(function(){
-        secondPokemon.throwAttack(firstPokemon);
-      }, 1000);
-    }
+  attackTrade(firstPokemon: Pokemon, secondPokemon: Pokemon):Promise<any> {
+    return firstPokemon.throwAttack(secondPokemon).then(() => {
+      if(secondPokemon.health_point > 0) {
+          return secondPokemon.throwAttack(firstPokemon);
+      }
+    });
   }
 }
