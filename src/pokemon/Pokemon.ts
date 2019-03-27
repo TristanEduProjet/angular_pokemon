@@ -7,7 +7,7 @@ export class Pokemon {
       setTimeout(() => {
         pokemon_targeted.health_point-=this.attack.dommage;
         console.log(this.name + ' attaque ' + pokemon_targeted.name);
-        console.log('Il reste ' + pokemon_targeted.health_point + ' Ã  ' + pokemon_targeted.name);
+        console.log('Il reste ' + pokemon_targeted.health_point + ' à ' + pokemon_targeted.name);
         resolve();
       }, 1500);
       return null;
