@@ -8,18 +8,24 @@ import { BattlePokemonComponent } from './battle/battle-pokemon.component';
 import { PrepareBattleComponent } from './prepare-battle/prepare-battle.component';
 import { SelectPokemonComponent } from './prepare-battle/select-pokemon.component';
 import { PokemonSimpleInfoComponent } from './prepare-battle/pokemon-simple-info.component';
+import { HomeComponent } from './home.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PrepareBattleComponent,
-    SelectPokemonComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        BattleComponent,
+        BattlePokemonComponent,
+        PrepareBattleComponent,
+        SelectPokemonComponent,
+        PokemonSimpleInfoComponent,
+        HomeComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        // FormsModule, HttpModule, JsonpModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
