@@ -1,0 +1,29 @@
+section, div {
+  height: 100vh;
+}
+
+.container {
+  display: table;
+  height: 100vh;
+  width: 100%;
+}
+
+.half {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 50%;
+  padding: 1rem;
+}
+
+.left-half {
+  background: rgba(255, 1, 21, 0.34);
+}
+
+.right-half {
+  background: rgba(8, 8, 182, 0.18);
+}
+
+/*:host {
+  height: 100%;
+}*/
