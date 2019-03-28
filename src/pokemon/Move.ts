@@ -4,6 +4,7 @@ import {Pokemon} from './Pokemon';
 export class Move {
   public dommage: number;
   public type: Type;
+  // public logger = (msg: string) => console.log(msg);
     constructor(public name: string, public initial_accuracy: number, public type_string: string) {
       let carotte = type_string.toUpperCase();
       this.type = Type[carotte];
