@@ -149,4 +149,26 @@ describe('defence', () => {
         var effectiveDammage=pokemon_hiten.reduceDammage(fireBall.dommage);
         expect(effectiveDammage).toBe(0);
     });
+
+    test('a pokemon (bulbizarre) who was hiten by a big dommage(50) who has a def(49)', () => {
+        const fireBall = new Attack('Boule de feu', 20,1, 'electric', 50);
+        const eclair = new Attack('Petit eclair', 20,0, 'electric', 15);
+        const pokemon_hiten = new Pokemon('bulbizarre', 45,49, 45, [eclair], 'electric');
+
+
+        var effectiveDammage=pokemon_hiten.reduceDammage(fireBall.dommage);
+        expect(effectiveDammage).toBe(1);
+    });
 });
+
+// describe('takeDammage', () => {
+//   test('a pokemon take 50 dammage', () => {
+//       const fireBall = new Attack('Boule de feu', 20,1, 'electric', 50);
+//       const eclair = new Attack('Petit eclair', 20,0, 'electric', 15);
+//       const pokemon_hiten = new Pokemon('bulbizarre', 45,49, 45, [eclair], 'electric');
+//
+//
+//       var effectiveDammage=pokemon_hiten.reduceDammage(fireBall.dommage);
+//       expect(effectiveDammage).toBe(1);
+//   });
+// });
