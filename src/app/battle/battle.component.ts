@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-battle',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BattleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private logger: NGXLogger) { }
 
   ngOnInit() {
   }
 
 }
+

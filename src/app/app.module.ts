@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BattleComponent } from './battle/battle.component';
@@ -23,6 +25,7 @@ import { HomeComponent } from './home.component';
     imports: [
         BrowserModule,
         AppRoutingModule,
+        LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.OFF}),
         // FormsModule, HttpModule, JsonpModule
     ],
     providers: [],

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Pokemon Battle';
 
-  constructor() {
+  constructor(private logger: NGXLogger) {
     /*let fireBall = new Attack('Boule de feu', 10, Type.ELECTRIQUE, 30);
     let eclair = new Attack('Petit eclair', 20, Type.ELECTRIQUE, 15);
     let dracofeu = new Pokemon('Dragon', 100, 30, fireBall, Type.ELECTRIQUE);
