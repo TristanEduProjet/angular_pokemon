@@ -64,16 +64,22 @@ describe('BattleTest', () => {
         expect(expectedHealth).toEqual([40, 85]);
     });
 
-    test('Attack(eclair initial_accuracy:20) hit if random value equals 0.1', () => {
+    test('Attack(eclair initial_accuracy:20) hit if random value equals 10', () => {
         const eclair = new Attack('Petit eclair', 20, 'electric', 15);
 
-        expect(eclair.isSuccessful(0.1)).toBeTruthy();
+        expect(eclair.isSuccessful(10)).toBeTruthy();
     });
 
-    /*test('Attack(fireball initial_accuracy:10) hit if random value equals 0.2', () => {
+    test('Attack(fireball initial_accuracy:10) hit if random value equals 20', () => {
         const fireBall = new Attack('Boule de feu', 10, 'electric', 30);
 
-        expect(eclair.isSuccessful(0.2)).toBe(false);
-    });*/
+        expect(fireBall.isSuccessful(20)).toBeFalsy();
+    });
+
+    test('Attack(fireball initial_accuracy:20) hit if random value equals 20', () => {
+        const fireBall = new Attack('Boule de feu', 20, 'electric', 30);
+
+        expect(fireBall.isSuccessful(20)).toBeTruthy();
+    });
 
 });
