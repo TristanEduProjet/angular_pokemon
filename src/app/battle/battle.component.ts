@@ -14,8 +14,8 @@ export class BattleComponent extends Battle implements OnInit, OnDestroy {
 
     constructor(private logger: NGXLogger) {
         super(
-            new Pokemon('P1', 120, 80, new Attack('Atk1', 10, Type.EAU, 20), Type.EAU),
-            new Pokemon('P2', 100, 90, new Attack('Atk2', 10, Type.EAU, 25), Type.EAU)
+            new Pokemon('P1', 120, 80, [new Attack('Atk1', 10, "eau", 20)], "eau"),
+            new Pokemon('P2', 100, 90, [new Attack('Atk2', 10, "eau", 25)], "eau")
         );
     }
 
