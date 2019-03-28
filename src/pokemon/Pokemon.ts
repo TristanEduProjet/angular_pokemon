@@ -4,6 +4,9 @@ export class Pokemon {
   public type: Type;
   constructor(public name: string,public health_point: number,public def: number,public speed: number,public abilities: Attack[],type_string: string) {
     this.type = Type[type_string.toUpperCase()];
+    this.abilities.forEach(a => {
+      a.log = (msg) => {this.log(msg);};
+    })
   }
 
   throwAttack(pokemon_targeted: Pokemon):Promise<any> {
@@ -11,13 +14,14 @@ export class Pokemon {
       setTimeout(() => {
         let randInt = Math.floor(Math.random() * this.abilities.length);
         let attackUsed = this.abilities[randInt];
+        let finalDammage: number;
 
         if(attackUsed.isSuccessful(Math.random() * 100)) {
           if(attackUsed.isCritical(Math.random()))
-            pokemon_targeted.takeDammage(this.reduceDammage(attackUsed.enhanceDammage()));
+            finalDammage = pokemon_targeted.takeDammage(pokemon_targeted.reduceDammage(attackUsed.enhanceDammage()));
           else
-            pokemon_targeted.takeDammage(this.reduceDammage(attackUsed.dommage));
-          this.log(this.name + ' attaque ' + pokemon_targeted.name + ' avec ' + attackUsed.name + ' ('+attackUsed.dommage+')');
+            finalDammage = pokemon_targeted.takeDammage(this.reduceDammage(attackUsed.dommage));
+          this.log(this.name + ' attaque ' + pokemon_targeted.name + ' avec ' + attackUsed.name + ' (base: '+attackUsed.dommage+', final : '+finalDammage+')');
         }
         else {
             this.log(this.name + ' rate son ' + attackUsed.name);
@@ -31,8 +35,9 @@ export class Pokemon {
     return new Promise(prom);
   }
 
-  takeDammage(dammage) {
+  takeDammage(dammage): number {
     this.health_point -= dammage;
+    return dammage;
   }
 
   reduceDammage(dammage): number {

@@ -24,13 +24,19 @@ export class Attack {
     }
 
     enhanceDammage(): number {
+      this.log('Coup critique! (+ '+(this.dommage * this.critical_ratio)+')');
       return this.dommage  + (this.dommage * this.critical_ratio);
     }
 
     isCritical(rand: number):boolean {
-      if(rand <= 0.05)
+      if(rand <= 1)
         return true;
       return false;
+    }
+
+    log(msg: string)
+    {
+      console.log(msg);
     }
 }
 
