@@ -4,10 +4,10 @@ import {Battle} from './Battle';
 
 describe('BattleTest', () => {
     test('dracofeu should destroy pika', () => {
-        const fireBall = new Attack('Boule de feu', 10, Type.ELECTRIQUE, 30);
-        const eclair = new Attack('Petit eclair', 20, Type.ELECTRIQUE, 15);
-        const dracofeu = new Pokemon('Dragon', 100, 30, fireBall, Type.ELECTRIQUE);
-        const pika = new Pokemon('pikapika', 70, 50, eclair, Type.ELECTRIQUE);
+        const fireBall = new Attack('Boule de feu', 10, 'electric', 30);
+        const eclair = new Attack('Petit eclair', 20, 'electric', 15);
+        const dracofeu = new Pokemon('Dragon', 100, 30, [fireBall], 'electric');
+        const pika = new Pokemon('pikapika', 70, 50, [eclair], 'electric');
 
         const winner = new Battle(dracofeu, pika).fight();
 
@@ -15,10 +15,10 @@ describe('BattleTest', () => {
     });
 
     test('Pause method should set isPaused to true', () => {
-        const fireBall = new Attack('Boule de feu', 10, Type.ELECTRIQUE, 30);
-        const eclair = new Attack('Petit eclair', 20, Type.ELECTRIQUE, 15);
-        const dracofeu = new Pokemon('Dragon', 100, 30, fireBall, Type.ELECTRIQUE);
-        const pika = new Pokemon('pikapika', 70, 50, eclair, Type.ELECTRIQUE);
+        const fireBall = new Attack('Boule de feu', 10, 'electric', 30);
+        const eclair = new Attack('Petit eclair', 20, 'electric', 15);
+        const dracofeu = new Pokemon('Dragon', 100, 30, [fireBall], 'electric');
+        const pika = new Pokemon('pikapika', 70, 50, [eclair], 'electric');
 
         const battle = new Battle(dracofeu, pika);
         battle.pause();
@@ -27,10 +27,10 @@ describe('BattleTest', () => {
     });
 
     test('Resume should set isPaused to false', () => {
-        const fireBall = new Attack('Boule de feu', 10, Type.ELECTRIQUE, 30);
-        const eclair = new Attack('Petit eclair', 20, Type.ELECTRIQUE, 15);
-        const dracofeu = new Pokemon('Dragon', 100, 30, fireBall, Type.ELECTRIQUE);
-        const pika = new Pokemon('pikapika', 70, 50, eclair, Type.ELECTRIQUE);
+        const fireBall = new Attack('Boule de feu', 10, 'electric', 30);
+        const eclair = new Attack('Petit eclair', 20, 'electric', 15);
+        const dracofeu = new Pokemon('Dragon', 100, 30, [fireBall], 'electric');
+        const pika = new Pokemon('pikapika', 70, 50, [eclair], 'electric');
 
         const battle = new Battle(dracofeu, pika);
         battle.pause();
@@ -40,10 +40,10 @@ describe('BattleTest', () => {
     });
 
     test('Pika(speed:50) should attack first (dracofeu speed : 30)', () => {
-        const fireBall = new Attack('Boule de feu', 10, Type.ELECTRIQUE, 30);
-        const eclair = new Attack('Petit eclair', 20, Type.ELECTRIQUE, 15);
-        const dracofeu = new Pokemon('dracofeu', 100, 30, fireBall, Type.ELECTRIQUE);
-        const pika = new Pokemon('pikapika', 70, 50, eclair, Type.ELECTRIQUE);
+        const fireBall = new Attack('Boule de feu', 10, 'electric', 30);
+        const eclair = new Attack('Petit eclair', 20, 'electric', 15);
+        const dracofeu = new Pokemon('dracofeu', 100, 30, [fireBall], 'electric');
+        const pika = new Pokemon('pikapika', 70, 50, [eclair], 'electric');
 
         const battle = new Battle(dracofeu, pika);
 
@@ -51,10 +51,10 @@ describe('BattleTest', () => {
     });
 
     test('Pika(health_point:70) should take dommage by dracofeu(dommage : 30) and dracofeu(health_point:100) should take dommage by pika(dommage : 30)', () => {
-        const fireBall = new Attack('Boule de feu', 10, Type.ELECTRIQUE, 30);
-        const eclair = new Attack('Petit eclair', 20, Type.ELECTRIQUE, 15);
-        const dracofeu = new Pokemon('dracofeu', 100, 30, fireBall, Type.ELECTRIQUE);
-        const pika = new Pokemon('pikapika', 70, 50, eclair, Type.ELECTRIQUE);
+        const fireBall = new Attack('Boule de feu', 10, 'electric', 30);
+        const eclair = new Attack('Petit eclair', 20, 'electric', 15);
+        const dracofeu = new Pokemon('dracofeu', 100, 30, [fireBall], 'electric');
+        const pika = new Pokemon('pikapika', 70, 50, [eclair], 'electric');
 
         const battle = new Battle(dracofeu, pika);
 
@@ -63,5 +63,17 @@ describe('BattleTest', () => {
 
         expect(expectedHealth).toEqual([40, 85]);
     });
+
+    test('Attack(eclair initial_accuracy:20) hit if random value equals 0.1', () => {
+        const eclair = new Attack('Petit eclair', 20, 'electric', 15);
+
+        expect(eclair.isSuccessful(0.1)).toBeTruthy();
+    });
+
+    /*test('Attack(fireball initial_accuracy:10) hit if random value equals 0.2', () => {
+        const fireBall = new Attack('Boule de feu', 10, 'electric', 30);
+
+        expect(eclair.isSuccessful(0.2)).toBe(false);
+    });*/
 
 });
