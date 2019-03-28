@@ -1,23 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { HomeComponent } from './home.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LoggerTestingModule } from 'ngx-logger';
 
-import { SelectPokemonComponent } from './select-pokemon.component';
-
-describe('SelectPokemonComponent', () => {
-  let component: SelectPokemonComponent;
-  let fixture: ComponentFixture<SelectPokemonComponent>;
+describe('HomeComponent', () => {
+  let component: HomeComponent;
+  let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [RouterTestingModule, LoggerTestingModule],
-        declarations: [ SelectPokemonComponent ]
+        declarations: [ HomeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SelectPokemonComponent);
+    fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
