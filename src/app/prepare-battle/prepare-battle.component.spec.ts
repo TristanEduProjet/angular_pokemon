@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LoggerTestingModule } from 'ngx-logger';
 
 import { PrepareBattleComponent } from './prepare-battle.component';
 
@@ -8,7 +10,8 @@ describe('PrepareBattleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrepareBattleComponent ]
+        imports: [RouterTestingModule, LoggerTestingModule],
+        declarations: [ PrepareBattleComponent ]
     })
     .compileComponents();
   }));

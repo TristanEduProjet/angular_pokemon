@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NGXLogger } from 'ngx-logger';
 import {Pokedex} from '../../pokemon/Pokedex';
 import {Pokemon} from '../../pokemon';
 
@@ -11,7 +12,7 @@ export class SelectPokemonComponent implements OnInit {
     private pokemons = [];
     public selected: Pokemon = null;
 
-    constructor() { }
+    constructor(private logger: NGXLogger) { }
 
     ngOnInit() {
         this.pokemons = Pokedex.getAllGenOne();
