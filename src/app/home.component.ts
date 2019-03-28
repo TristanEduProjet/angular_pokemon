@@ -9,10 +9,10 @@ import { NGXLogger } from 'ngx-logger';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, private logger: NGXLogger) { }
+    constructor(private router: Router, private logger: NGXLogger) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
     newBattle() { // TODO temporaire pour implémentation
         this.router.navigate(['/battle']);

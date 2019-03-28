@@ -1,3 +1,15 @@
-<p>
-  battle works!
-</p>
+<h2>Battle</h2>
+<div>
+    <h3>P1 : {{bluePokemon.name}}</h3>
+    <p>HP : {{bluePokemon.health_point}}</p>
+</div>
+<div>
+    <h3>P2 : {{redPokemon.name}}</h3>
+    <p>HP : {{redPokemon.health_point}}</p>
+</div>
+<div>
+    <h3>Logs</h3>
+    <div>
+        <p *ngFor="let log of logs">{{log}}</p>
+    </div>
+</div>
