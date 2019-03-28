@@ -1,0 +1,7 @@
+:host.player > p {
+    color: dodgerblue;
+}
+
+:host.opponent > p {
+    color: red;
+}

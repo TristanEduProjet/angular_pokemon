@@ -1,15 +1,9 @@
 <h2>Battle</h2>
-<div>
-    <h3>P1 : {{bluePokemon.name}}</h3>
-    <p>HP : {{bluePokemon.health_point}}</p>
+<div id="battle" class="bg-1">
+    <app-battle-pokemon [pokemon]="bluePokemon" class="player" (log)="log($event)"></app-battle-pokemon>
+    <app-battle-pokemon [pokemon]="redPokemon" class="opponent" (log)="log($event)"></app-battle-pokemon>
 </div>
-<div>
-    <h3>P2 : {{redPokemon.name}}</h3>
-    <p>HP : {{redPokemon.health_point}}</p>
-</div>
-<div>
-    <h3>Logs</h3>
-    <div>
-        <p *ngFor="let log of logs">{{log}}</p>
-    </div>
-</div>
+<fieldset>
+    <legend>Logs</legend>
+    <p *ngFor="let log of logs">{{log}}</p>
+</fieldset>
