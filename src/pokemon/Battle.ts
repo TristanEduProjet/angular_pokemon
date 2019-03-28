@@ -27,6 +27,16 @@ export class Battle {
         }
     }
 
+    initFight() {
+      this.displayPokemons();
+      this.fight();
+    }
+
+    displayPokemons() {
+      this.log(this.redPokemon.name + ' : vie = ' + this.redPokemon.health_point + ', def = ' + this.redPokemon.def + ', speed = ' + this.redPokemon.speed);
+      this.log(this.bluePokemon.name + ' : vie = ' + this.bluePokemon.health_point + ', def = ' + this.bluePokemon.def + ', speed = ' + this.bluePokemon.speed);
+    }
+
     fight(): Pokemon {
         if (this.redPokemon.health_point > 0 && this.bluePokemon.health_point > 0) {
             this.round().then(() => {

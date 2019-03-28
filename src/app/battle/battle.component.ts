@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
+import {Pokedex} from '../../pokemon/Pokedex';
 
 import {Battle, Pokemon, Type} from '../../pokemon';
 import {Attack} from '../../pokemon/Move';
@@ -14,13 +15,15 @@ export class BattleComponent extends Battle implements OnInit, OnDestroy {
 
     constructor(private logger: NGXLogger) {
         super(
-            new Pokemon('P1', 120, 80, [new Attack('Atk1', 10, "eau", 20)], "eau"),
-            new Pokemon('P2', 100, 90, [new Attack('Atk2', 10, "eau", 25)], "eau")
+            //new Pokemon('P1', 120, 80, [new Attack('Atk1', 10, "eau", 20)], "eau"),
+            //new Pokemon('P2', 100, 90, [new Attack('Atk2', 10, "eau", 25)], "eau")
+            Pokedex.getPokemonFromId(2),
+            Pokedex.getPokemonFromId(1)
         );
     }
 
     ngOnInit() {
-        this.fight();
+        this.initFight();
     }
 
     ngOnDestroy() {
