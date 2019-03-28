@@ -20,7 +20,7 @@ export class Attack {
     }
 
     isSuccessful(rand: number) {
-      if(this.initial_accuracy <= rand)
+      if(this.initial_accuracy >= rand)
         return true;
       return false;
     }
