@@ -18,6 +18,12 @@ export class Attack {
       let carotte = type_string.toUpperCase();
       this.type = Type[carotte];
     }
+
+    isSuccessful(rand: number) {
+      if(this.initial_accuracy <= rand)
+        return true;
+      return false;
+    }
 }
 
 interface IMove {

@@ -11,8 +11,15 @@ export class Pokemon {
     let prom = (resolve: any, reject: any)  => {
       setTimeout(() => {
         let randInt = Math.floor(Math.random() * this.abilities.length);
-        pokemon_targeted.health_point-=this.abilities[randInt].dommage;
-        this.log(this.name + ' attaque ' + pokemon_targeted.name + ' avec ' + this.abilities[randInt].name);
+
+        if(this.abilities[randInt].isSuccessful(Math.random() * 100)) {
+          pokemon_targeted.health_point-=this.abilities[randInt].dommage;
+          this.log(this.name + ' attaque ' + pokemon_targeted.name + ' avec ' + this.abilities[randInt].name);
+        }
+        else {
+            this.log(this.name + ' rate son ' + pokemon_targeted.name);
+        }
+
         this.log('Il reste ' + pokemon_targeted.health_point + ' a ' + pokemon_targeted.name);
         resolve();
       }, 1500);
