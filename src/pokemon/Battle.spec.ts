@@ -14,7 +14,7 @@ describe('BattleTest', () => {
     //     expect(winner).toBe(dracofeu);
     // });
 
-    test('Pause method should set isPaused to true', () => {
+    test('pause() method should set isPaused to true', () => {
         const fireBall = new Attack('Boule de feu', 10, 'electric', 30);
         const eclair = new Attack('Petit eclair', 20, 'electric', 15);
         const dracofeu = new Pokemon('Dragon', 100,0, 30, [fireBall], 'electric');
@@ -26,7 +26,7 @@ describe('BattleTest', () => {
         expect(battle.isPaused).toBeTruthy();
     });
 
-    test('Resume should set isPaused to false', () => {
+    test('resume() should set isPaused to false', () => {
         const fireBall = new Attack('Boule de feu', 10, 'electric', 30);
         const eclair = new Attack('Petit eclair', 20, 'electric', 15);
         const dracofeu = new Pokemon('Dragon', 100,0, 30, [fireBall], 'electric');
@@ -64,19 +64,19 @@ describe('BattleTest', () => {
     //     expect(expectedHealth).toEqual([40, 85]);
     // });
 
-    test('Attack(eclair initial_accuracy:20) hit if random value equals 10', () => {
+    test('Attack(eclair initial_accuracy:20) should hit if random value received equals to 10', () => {
         const eclair = new Attack('Petit eclair', 20, 'electric', 15);
 
         expect(eclair.isSuccessful(10)).toBeTruthy();
     });
 
-    test('Attack(fireball initial_accuracy:10) hit if random value equals 20', () => {
+    test('Attack(fireball initial_accuracy:10) should hit if random value received equals to 20', () => {
         const fireBall = new Attack('Boule de feu', 10, 'electric', 30);
 
         expect(fireBall.isSuccessful(20)).toBeFalsy();
     });
 
-    test('Attack(fireball initial_accuracy:20) hit if random value equals 20', () => {
+    test('Attack(fireball initial_accuracy:20) should hit if random value received equals to 20', () => {
         const fireBall = new Attack('Boule de feu', 20, 'electric', 30);
 
         expect(fireBall.isSuccessful(20)).toBeTruthy();
@@ -84,19 +84,19 @@ describe('BattleTest', () => {
 });
 
 describe('a hit can be transformed in critical hit', () => {
-  test('a hit is transformed in critical if his random value is equals to 0.04', () => {
+  test('a hit should be critical if its random value is equal to 0.04', () => {
     const ferocerie = new Attack('Ferocerie', 40, 'electric', 100);
 
     expect(ferocerie.isCritical(0.04)).toBeTruthy();
   });
 
-  test('a hit is transformed in critical if his random value is equals to 0.08', () => {
+  test('a hit shouldnt be critical if its random value is equal to 0.08', () => {
     const ferocerie = new Attack('Ferocerie', 40, 'electric', 100);
 
     expect(ferocerie.isCritical(0.8)).toBeFalsy();
   });
 
-    test('a critical hit is bigger than normal hit', () => {
+    test('a critical hit should be more powerfull than a normal hit', () => {
       const fireBall = new Attack('Boule de feu', 20, 'electric', 30);
 
       var degat=fireBall.dommage+fireBall.enhanceDammage();
@@ -104,7 +104,7 @@ describe('a hit can be transformed in critical hit', () => {
       expect(fireBall.dommage<degat).toBeTruthy();
     });
 
-    test('a critical hit is bigger than normal hit', () => {
+    test('a critical hit should be more powerfull than a normal hit', () => {
       const ferocerie = new Attack('Ferocerie', 40, 'electric', 100);
 
       var degat=ferocerie.dommage+ferocerie.enhanceDammage();
@@ -114,16 +114,25 @@ describe('a hit can be transformed in critical hit', () => {
 
 describe('defence', () => {
   //Ajouter de la defence a chaque pokemon.
-    test('a pokemon (pika) who was hiten who has a def(15) must reduce the dommage(30)', () => {
+    test('Given pikapika having 15 def, when pikapika is hitten(dammage: 30), pikapika should reduce dammage', () => {
         const fireBall = new Attack('Boule de feu', 20, 'electric', 30);
         const eclair = new Attack('Petit eclair', 20, 'electric', 15);
         const pokemon_hiten = new Pokemon('pikapika', 70,15, 50, [eclair], 'electric');
 
         var effectiveDammage=pokemon_hiten.reduceDammage(fireBall.dommage)
-        expect(effectiveDammage).toBe(15);
+        expect(effectiveDammage<fireBall.dommage).toBeTruthy();
     });
 
-    test('a pokemon (pika) who was hiten who has a def(45) must cancel the dommage(30)', () => {
+    test('Given pikapika having 30 def, when pikapika is hitten(dammage: 30), should cancel dommage', () => {
+        const fireBall = new Attack('Boule de feu', 20, 'electric', 30);
+        const eclair = new Attack('Petit eclair', 20, 'electric', 15);
+        const pokemon_hiten = new Pokemon('pikapika', 70,30, 50, [eclair], 'electric');
+
+        var effectiveDammage=pokemon_hiten.reduceDammage(fireBall.dommage);
+        expect(effectiveDammage).toBe(0);
+    });
+
+    test('Given pikapika having 45 def, when pikapika is hitten(dammage: 30), it shouldnt heal himself', () => {
         const fireBall = new Attack('Boule de feu', 20, 'electric', 30);
         const eclair = new Attack('Petit eclair', 20, 'electric', 15);
         const pokemon_hiten = new Pokemon('pikapika', 70,45, 50, [eclair], 'electric');
@@ -132,30 +141,10 @@ describe('defence', () => {
         expect(effectiveDammage).toBe(0);
     });
 
-    test('a pokemon (pika) who was hiten by low dommage(30) who has a def(45) not health', () => {
-        const fireBall = new Attack('Boule de feu', 20, 'electric', 30);
-        const eclair = new Attack('Petit eclair', 20, 'electric', 15);
-        const pokemon_hiten = new Pokemon('pikapika', 70,45, 50, [eclair], 'electric');
-
-        var effectiveDammage=pokemon_hiten.reduceDammage(fireBall.dommage);
-        expect(effectiveDammage).toBe(0);
-    });
-
-    test('a pokemon (pika) who was hiten by low dommage(10) who has a def(10) not health', () => {
-        const fireBall = new Attack('Boule de feu', 20, 'electric', 30);
-        const eclair = new Attack('Petit eclair', 20, 'electric', 15);
-        const pokemon_hiten = new Pokemon('pikapika', 70,45, 50, [eclair], 'electric');
-
-
-        var effectiveDammage=pokemon_hiten.reduceDammage(fireBall.dommage);
-        expect(effectiveDammage).toBe(0);
-    });
-
-    test('a pokemon (bulbizarre) who was hiten by a big dommage(50) who has a def(49)', () => {
+    test('Given bulbizarre having 49 def, when bulbizarre is hitten(dammage: 50), bulbizarre should lose 1 health point', () => {
         const fireBall = new Attack('Boule de feu', 20, 'electric', 50);
         const eclair = new Attack('Petit eclair', 20, 'electric', 15);
         const pokemon_hiten = new Pokemon('bulbizarre', 45,49, 45, [eclair], 'electric');
-
 
         var effectiveDammage=pokemon_hiten.reduceDammage(fireBall.dommage);
         expect(effectiveDammage).toBe(1);
@@ -163,8 +152,7 @@ describe('defence', () => {
 });
 
 describe('takeDammage', () => {
-  test('a pokemon take 50 dammage', () => {
-      const fireBall = new Attack('Boule de feu', 20, 'electric', 50);
+  test('bulbizarre(45 hp) should have 15 health_point when he take 30 dammage', () => {
       const eclair = new Attack('Petit eclair', 20, 'electric', 15);
       const pokemon_hiten = new Pokemon('bulbizarre', 45,49, 45, [eclair], 'electric');
 
