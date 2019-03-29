@@ -2,33 +2,30 @@ import {Attack} from './Move';
 
 export class Pokemon {
   public type: Type;
-  constructor(public name: string,public health_point: number,public def: number,public speed: number,public abilities: Attack[],type_string: string) {
+  constructor(public name: string, public health_point: number, public def: number, public speed: number, public abilities: Attack[], type_string: string) {
     this.type = Type[type_string.toUpperCase()];
     this.abilities.forEach(a => {
-      a.log = (msg) => {this.log(msg);};
-    })
+      a.log = (msg) => this.log(msg);
+    });
   }
 
-  throwAttack(pokemon_targeted: Pokemon):Promise<any> {
-    let prom = (resolve: any, reject: any)  => {
+  throwAttack(pokemon_targeted: Pokemon): Promise<any> {
+    const prom = (resolve: any, reject: any)  => {
       setTimeout(() => {
-        let randInt = Math.floor(Math.random() * this.abilities.length);
-        let attackUsed = this.abilities[randInt];
+        const randInt = Math.floor(Math.random() * this.abilities.length);
+        const attackUsed = this.abilities[randInt];
         let finalDammage: number;
-        let criticalHit: string;
         let additionnalDammage: number = 0;
 
         if(attackUsed.isSuccessful(Math.random() * 100)) {
           if(attackUsed.isCritical(Math.random())) {
             additionnalDammage = attackUsed.enhanceDammage();
             finalDammage = pokemon_targeted.takeDammage(pokemon_targeted.reduceDammage(attackUsed.dommage + additionnalDammage));
-          }
-          else {
+          } else {
             finalDammage = pokemon_targeted.takeDammage(this.reduceDammage(attackUsed.dommage));
           }
           this.log(this.name + ' attaque ' + pokemon_targeted.name + ' avec ' + attackUsed.name + ' (base : '+attackUsed.dommage+', coup critique : '+additionnalDammage+', réduction : '+pokemon_targeted.def+', final : '+finalDammage+')');
-        }
-        else {
+        } else {
             this.log(this.name + ' rate son ' + attackUsed.name);
         }
 
@@ -46,7 +43,7 @@ export class Pokemon {
   }
 
   reduceDammage(dammage): number {
-    let dammageReduced = dammage - this.def;
+    const dammageReduced = dammage - this.def;
     return (dammageReduced > 0 ? dammageReduced : 0);
   }
 
