@@ -29,7 +29,7 @@ export class Pokemon {
             this.log(this.name + ' rate son ' + attackUsed.name);
         }
 
-        this.log('Il reste ' + pokemon_targeted.health_point + ' a ' + pokemon_targeted.name);
+        this.log('Il reste ' + (pokemon_targeted.health_point > 0 ? pokemon_targeted.health_point : 0) + ' points de vie a ' + pokemon_targeted.name);
         resolve();
       }, 1500);
       return null;
