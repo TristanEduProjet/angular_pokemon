@@ -13,8 +13,10 @@ export class Move {
 
 export class Attack {
   public type: Type;
-    constructor(public name: string, public initial_accuracy: number, public critical_ratio: number, public type_string: string, public dommage: number) {
+  public critical_ratio: number;
+    constructor(public name: string, public initial_accuracy: number, public type_string: string, public dommage: number) {
       this.type = Type[type_string.toUpperCase()];
+      this.critical_ratio = Math.random() * 2;
     }
 
     isSuccessful(rand: number) {
@@ -24,12 +26,12 @@ export class Attack {
     }
 
     enhanceDammage(): number {
-      this.log('Coup critique! (+ '+(this.dommage * this.critical_ratio)+')');
-      return this.dommage  + (this.dommage * this.critical_ratio);
+      let additionnalDammage = Math.floor(this.dommage * this.critical_ratio);
+      return additionnalDammage;
     }
 
     isCritical(rand: number):boolean {
-      if(rand <= 1)
+      if(rand <= 0.05)
         return true;
       return false;
     }

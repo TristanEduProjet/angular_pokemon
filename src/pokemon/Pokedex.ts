@@ -24,7 +24,7 @@ export class Pokedex {
         const tmp = findPokemon(id);
         const moves = tmp.move_learnsets.flatMap(mls => mls.learnset.map(ln => {
           const move = findMove(ln.move);
-          return new Attack(move.names.fr, move.accuracy, move.critical_hit, move.type, move.power);
+          return new Attack(move.names.fr, move.accuracy, move.type, move.power);
         }));
         return new Pokemon(tmp.names.fr || tmp.names.en, tmp.base_stats.hp, tmp.base_stats.def, tmp.base_stats.speed, moves, "Normal");
         // .abilities{name hidden*} .move_learnsets[{games learnset[{move level* tm* egg_move*}]}] .types[]
