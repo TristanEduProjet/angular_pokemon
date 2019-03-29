@@ -1,14 +1,13 @@
 import {Pokemon} from './Pokemon';
 
 export class Battle {
-    public roundCounter: number;
+    public roundCounter: number = 1;
     public bluePokemon: Pokemon;
     public redPokemon: Pokemon;
     public winner: Pokemon;
     public isPaused: boolean;
 
     constructor(redPokemon: Pokemon, bluePokemon: Pokemon) {
-        this.roundCounter = 0;
         this.redPokemon = redPokemon;
         this.bluePokemon = bluePokemon;
         this.isPaused = false;
@@ -19,6 +18,8 @@ export class Battle {
     }
 
     round(): Promise<any> {
+        this.log('\n\nRound : ' + this.roundCounter);
+        this.log('\n');
         this.roundCounter++;
         if (this.priority(this.redPokemon, this.bluePokemon) === this.redPokemon) {
             return this.attackTrade(this.redPokemon, this.bluePokemon);
