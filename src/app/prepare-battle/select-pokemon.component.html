@@ -1,0 +1,6 @@
+<p>
+    <i>Selected : <b>{{selected ? selected.name : 'none'}}</b></i>
+</p>
+<ul>
+    <li *ngFor="let pokemon of pokemons" (click)="onSelect(pokemon)">{{pokemon.name}} <img [src]="pokemon.img" [alt]="pokemon.name"></li>
+</ul>

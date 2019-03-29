@@ -1,0 +1,73 @@
+:host div {
+    display: inline-block;
+}
+
+.infos {
+    color: lightgray;
+    font-family: pokemon-font monospace;
+    position: absolute;
+    height: 50px;
+    width: 240px;
+    border: 3px solid rgb(194, 124, 96);
+    border-radius: 5px;
+    background-color: #31373c;
+}
+
+.infos > p, .infos > div {
+    margin: 0;
+    padding: 0;
+}
+
+:host.player .infos {
+    -webkit-clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+    bottom: 240px;
+    left: 10px;
+}
+
+:host.opponent .infos {
+    -webkit-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+    top: 80px;
+    right: 10px;
+}
+
+.infos .name, .infos .lvl {
+    font-size: 1em;
+    width: auto;
+}
+
+.infos .name {
+    float: left;
+    margin-right: 1em;
+}
+.infos .lvl {
+    float: right;
+    text-align: right;
+    margin-left: 1em;
+}
+
+.infos .hp:before {
+    content: 'HP: '
+}
+
+.infos .lvl:before {
+    content: 'LV.'
+}
+
+.ko img, img.ko {
+    -webkit-filter: grayscale(75%);
+    filter: grayscale(75%);
+}
+
+:host.player > img {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+}
+
+:host.opponent > img {
+    position: absolute;
+    top: 250px;
+    right: 100px;
+}

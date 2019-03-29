@@ -1,0 +1,9 @@
+<img [src]="imgUrl" [alt]="pokemon.name" [ngClass]="{ko: pokemon.health_point <= 0}"/>
+<div class="infos">
+    <div>
+        <p class="name">{{pokemon.name}}</p>
+        <p class="lvl">??</p><!--TODO add level on pokemon-->
+    </div>
+    <progress class="hp" [value]="pokemon.health_point" max="100"></progress>
+    <!--<p class="hp">{{pokemon.health_point}}/??</p><!- -TODO add base hp to pokemon-->
+</div>

@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
+  "version": 50,
   "newProjectRoot": "projects",
   "projects": {
     "PokemonBattle": {
@@ -20,13 +20,21 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              { "glob": "*[0-9].*", "input": "./node_modules/oakdex-pokedex-sprites/icons/", "output": "/assets/pokemons/" }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/pokemon-font/css/pokemon-font.css"
             ],
             "scripts": [],
-            "es5BrowserSupport": true
+            "es5BrowserSupport": true,
+            "showCircularDependencies": true,
+            "extractCss": true,
+            "deleteOutputPath": true,
+            "vendorChunk": true,
+            "vendorSourceMap": true,
+            "sourceMap": true
           },
           "configurations": {
             "production": {
