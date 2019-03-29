@@ -7,7 +7,9 @@
     <div id="logs">
         <!--<legend>Logs</legend>-->
         <div class="content">
-            <p *ngFor="let log of logs">{{log}}</p>
+            <!--<ng-scrollbar [shown]="'always'" [autoUpdate]="true" [trackY]="true" [trackX]="false">-->
+                <p *ngFor="let log of logs">{{log}}</p>
+            <!--</ng-scrollbar>-->
         </div>
     </div>
 </div>
