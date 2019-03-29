@@ -1,9 +1,13 @@
 <h2>Battle</h2>
-<div id="battle" class="bg-1">
-    <app-battle-pokemon [pokemon]="bluePokemon" class="player" (log)="log($event)"></app-battle-pokemon>
-    <app-battle-pokemon [pokemon]="redPokemon" class="opponent" (log)="log($event)"></app-battle-pokemon>
+<div id="container">
+    <div id="battle" class="bg-1">
+        <app-battle-pokemon [pokemon]="bluePokemon" class="player" (log)="log($event)"></app-battle-pokemon>
+        <app-battle-pokemon [pokemon]="redPokemon" class="opponent" (log)="log($event)"></app-battle-pokemon>
+    </div>
+    <div id="logs">
+        <!--<legend>Logs</legend>-->
+        <div class="content">
+            <p *ngFor="let log of logs">{{log}}</p>
+        </div>
+    </div>
 </div>
-<fieldset>
-    <legend>Logs</legend>
-    <p *ngFor="let log of logs">{{log}}</p>
-</fieldset>

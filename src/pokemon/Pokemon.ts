@@ -1,6 +1,6 @@
 import {Attack} from './Move';
 export class Pokemon {
-    constructor(public name: string, public health_point: number, public speed: number, public attack: Attack, public type: Type) {}
+    constructor(public readonly id: number, public name: string, public health_point: number, public speed: number, public attack: Attack, public type: Type) {}
 
     throwAttack(pokemon_targeted: Pokemon): Promise<any> {
         const prom = (resolve: any, reject: any)  => {

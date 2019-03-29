@@ -31,3 +31,4 @@ Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.pr
 ## Ressources
 - Backgrounds from Deviantart
 - Sprites from `oakdex-pokedex-sprites`
+- UI from The Spriters Resource
