@@ -90,7 +90,7 @@ describe('a hit can be transformed in critical hit', () => {
     expect(ferocerie.isCritical(0.04)).toBeTruthy();
   });
 
-  test('a hit is transformed in critical if his random value is equals to 0.04', () => {
+  test('a hit is transformed in critical if his random value is equals to 0.08', () => {
     const ferocerie = new Attack('Ferocerie', 40,1, 'electric', 100);
 
     expect(ferocerie.isCritical(0.8)).toBeFalsy();
@@ -161,14 +161,13 @@ describe('defence', () => {
     });
 });
 
-// describe('takeDammage', () => {
-//   test('a pokemon take 50 dammage', () => {
-//       const fireBall = new Attack('Boule de feu', 20,1, 'electric', 50);
-//       const eclair = new Attack('Petit eclair', 20,0, 'electric', 15);
-//       const pokemon_hiten = new Pokemon('bulbizarre', 45,49, 45, [eclair], 'electric');
-//
-//
-//       var effectiveDammage=pokemon_hiten.reduceDammage(fireBall.dommage);
-//       expect(effectiveDammage).toBe(1);
-//   });
-// });
+describe('takeDammage', () => {
+  test('a pokemon take 50 dammage', () => {
+      const fireBall = new Attack('Boule de feu', 20,1, 'electric', 50);
+      const eclair = new Attack('Petit eclair', 20,0, 'electric', 15);
+      const pokemon_hiten = new Pokemon('bulbizarre', 45,49, 45, [eclair], 'electric');
+
+      pokemon_hiten.takeDammage(30);
+      expect(pokemon_hiten.health_point).toBe(15);
+  });
+});
