@@ -10,7 +10,7 @@ export class Battle {
     constructor(redPokemon: Pokemon, bluePokemon: Pokemon) {
         this.redPokemon = redPokemon;
         this.bluePokemon = bluePokemon;
-        this.isPaused = false;
+        this.isPaused = true;
     }
 
     priority(firstPokemon: Pokemon, secondPokemon: Pokemon) {
@@ -39,6 +39,8 @@ export class Battle {
     }
 
     fight(): Pokemon {
+      if(!this.isPaused)
+      {
         if (this.redPokemon.health_point > 0 && this.bluePokemon.health_point > 0) {
             this.round().then(() => {
                 if (this.isPaused) {
@@ -46,14 +48,16 @@ export class Battle {
                 }
                 this.fight();
             });
-        } else {
+          } else {
             this.winner = this.redPokemon.health_point > 0 ? this.redPokemon : this.bluePokemon;
             this.log(this.winner.name + ' est le gagnant !');
             return this.winner;
+          }
         }
     }
 
     pause() {
+        this.log("LAAAAA PPPPPAAAAAUUUUSSSSEEEEEEE");
         this.isPaused = true;
     }
 
