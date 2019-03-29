@@ -42,4 +42,11 @@ export class BattleComponent implements OnInit, OnDestroy, AfterViewInit {
     protected log(msg: string) {
         this.logs.push(msg);
     }
+
+    pause() {
+        if(this.battle.isPaused)
+            this.battle.resume();
+        else
+            this.battle.pause();
+    }
 }

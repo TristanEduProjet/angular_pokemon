@@ -1,4 +1,5 @@
 <h2>Battle</h2>
+<button (click)="pause()" [disabled]="!battle">{{battle.isPaused ? 'Resume' : 'Pause'}}</button>
 <div id="container">
     <div id="battle" class="bg-1">
         <app-battle-pokemon [pokemon]="battle.bluePokemon" class="player" (log)="log($event)"></app-battle-pokemon>
