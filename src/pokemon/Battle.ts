@@ -2,8 +2,8 @@ import {Pokemon} from './Pokemon';
 
 export class Battle {
     public roundCounter: number = 1;
-    protected bluePokemon: Pokemon;
-    protected redPokemon: Pokemon;
+    public bluePokemon: Pokemon;
+    public redPokemon: Pokemon;
     public winner: Pokemon;
     public isPaused: boolean;
 
@@ -70,7 +70,7 @@ export class Battle {
         });
     }
 
-    protected log(msg: string) {
+    log(msg: string) {
         console.log(msg);
     }
 }

@@ -24,7 +24,8 @@
               { "glob": "*[0-9].*", "input": "./node_modules/oakdex-pokedex-sprites/icons/", "output": "/assets/pokemons/" }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/pokemon-font/css/pokemon-font.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true,

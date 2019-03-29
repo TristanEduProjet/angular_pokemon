@@ -14,8 +14,74 @@
     background-image: url("../../assets/bg/pokemon_x_and_y_battle_background_2_by_phoenixoflight92-d83jrvo.jpg");
 }
 
-#battle {
+#container {
+    width: 100%;
+    display: table;
+}
+
+#container > * {
+    display: table-cell;
+}
+
+#container #battle {
     width: 800px;
     height: 480px;
     margin: 1em;
+    background-repeat: no-repeat;
+}
+
+#container #logs {
+    width: auto;
+    min-width: 300px;
+    min-height: 50px;
+    /*border-image-source: url("../../assets/GB_In-battle_Menu.png");
+    border-image-slice: 8 7 fill;
+    border-image-repeat: stretch;*/
+    height: 430px;
+    margin: 0;
+    padding: 3px;
+    background-color: rgb(40, 80, 104);
+    position: relative;
+    border-radius: 9px;
+    border: 6px solid rgb(200, 168, 72);
+    /*box-shadow: 0 0 0 4px rgb(40, 48, 48);
+    outline: 4px solid rgb(40, 48, 48);*/
+}
+#container #logs:after {
+    position: absolute;
+    content: "";
+    border: 3px solid rgb(224, 216, 224);
+    border-radius: 5px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+#container #logs .content {
+    height: 420px; /* TODO: fix top "void" */
+    width: 100%;
+    overflow-y: auto;
+    margin: 0;
+    padding: 5px;
+    padding-right: 2px;
+    /*display: flex;
+    flex-direction: column-reverse;*/
+    /*position: relative;*/
+    color: white;
+    font-family: pokemon-font, monospace;
+    font-size: x-small;
+}
+
+/*#container #logs .content:after {
+    content: "";
+    position: absolute;
+    top: 11px; / * sum 3 border * /
+    bottom: 11px;
+    left: 11px;
+    right: 11px;
+}*/
+
+#logs .content > * {
+    margin: 0;
 }
