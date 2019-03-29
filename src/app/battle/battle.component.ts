@@ -16,33 +16,15 @@ import {Attack} from '../../pokemon/Move';
 export class BattleComponent implements OnInit, OnDestroy, AfterViewInit {
     logs: string[] = [];
     private battle: Battle;
-    public selectedRedId: number;
-    public selectBlueId: number;
-
-    private route: ActivatedRoute;
-    private router: Router;
-    private service: HeroService;
-
     /*@ViewChild('logsDiv') logsDiv;
     @ViewChild(NgScrollbar) scrollbarRef: NgScrollbar;*/
 
-    constructor(private logger: NGXLogger, private router: Router) {
-      this.hero$ = this.route.paramMap.pipe(
-        switchMap((params: ParamMap) =>
-          this.service.getHero(params.get('id')))
-      );
-    }
+    constructor(private logger: NGXLogger, private router: Router, private route: ActivatedRoute) { }
 
     ngOnInit() {
-        this.battle = new Battle(
-            /*new Pokemon('P1', 120, 80, 50, [new Attack('Atk1', 10, 'eau', 20)], 'eau'),
-            new Pokemon('P2', 100, 90, 40, [new Attack('Atk2', 10, 'eau', 25)], 'eau')*/
-            Pokedex.getPokemonFromId(2),
-            Pokedex.getPokemonFromId(1)
-        );
+        this.battle = new Battle(Pokedex.getPokemonFromId(this.route.snapshot.params['p1']), Pokedex.getPokemonFromId(this.route.snapshot.params['p2']));
         this.battle.log = (msg: string) => this.log(msg);
         this.battle.initFight();
-
     }
 
     ngOnDestroy() {
