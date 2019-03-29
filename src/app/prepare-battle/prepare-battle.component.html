@@ -1,8 +1,8 @@
 <p>
     prepare-battle for {{name}}!
-    <button (click)="startFight()">Fight!</button>
+    <button (click)="startFight()" [disabled]="!(selectRed.selected && selectBlue.selected)">Fight!</button>
 </p>
 <section class="container">
-    <app-select-pokemon class="half left-half"></app-select-pokemon>
-    <app-select-pokemon class="half right-half"></app-select-pokemon>
+    <app-select-pokemon #selectRed class="half left-half"></app-select-pokemon>
+    <app-select-pokemon #selectBlue class="half right-half"></app-select-pokemon>
 </section>

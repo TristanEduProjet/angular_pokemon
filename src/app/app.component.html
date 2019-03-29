@@ -1,10 +1,7 @@
 <nav>
-    <a>Navigation:</a>
-    <ul>
-        <li><a [routerLink]="['home']">Home</a></li>
-        <li><a [routerLink]="['select']">Prepare</a></li>
-        <li><a>Battle</a></li>
-    </ul>
+    <a [routerLink]="['home']" routerLinkActive="active">Home</a>
+    <a [routerLink]="['select']" routerLinkActive="active">Prepare</a>
+    <a [routerLink]="['battle']">Battle</a>
 </nav>
 <article>
     <router-outlet></router-outlet>
