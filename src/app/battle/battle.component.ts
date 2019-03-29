@@ -1,6 +1,8 @@
 import { Component, ViewChild, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { NGXLogger } from 'ngx-logger';
 import { NgScrollbar } from 'ngx-scrollbar';
+import { switchMap } from 'rxjs/operators';
 
 import {Pokedex} from '../../pokemon/Pokedex';
 import {Battle, Pokemon, Type} from '../../pokemon';
@@ -14,10 +16,22 @@ import {Attack} from '../../pokemon/Move';
 export class BattleComponent implements OnInit, OnDestroy, AfterViewInit {
     logs: string[] = [];
     private battle: Battle;
+    public selectedRedId: number;
+    public selectBlueId: number;
+
+    private route: ActivatedRoute;
+    private router: Router;
+    private service: HeroService;
+
     /*@ViewChild('logsDiv') logsDiv;
     @ViewChild(NgScrollbar) scrollbarRef: NgScrollbar;*/
 
-    constructor(private logger: NGXLogger) { }
+    constructor(private logger: NGXLogger, private router: Router) {
+      this.hero$ = this.route.paramMap.pipe(
+        switchMap((params: ParamMap) =>
+          this.service.getHero(params.get('id')))
+      );
+    }
 
     ngOnInit() {
         this.battle = new Battle(
