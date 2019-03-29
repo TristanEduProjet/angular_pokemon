@@ -2,7 +2,7 @@ import {Attack} from './Move';
 
 export class Pokemon {
   public type: Type;
-  constructor(public name: string, public health_point: number, public def: number, public speed: number, public abilities: Attack[], type_string: string) {
+  constructor(public readonly id: number, public name: string, public health_point: number, public def: number, public speed: number, public abilities: Attack[], type_string: string) {
     this.type = Type[type_string.toUpperCase()];
     this.abilities.forEach(a => {
       a.log = (msg) => this.log(msg);

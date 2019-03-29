@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
-import {Pokedex} from '../../pokemon/Pokedex';
+import { NgScrollbar } from 'ngx-scrollbar';
 
+import {Pokedex} from '../../pokemon/Pokedex';
 import {Battle, Pokemon, Type} from '../../pokemon';
 import {Attack} from '../../pokemon/Move';
 
@@ -10,9 +11,11 @@ import {Attack} from '../../pokemon/Move';
   templateUrl: './battle.component.html',
   styleUrls: ['./battle.component.css']
 })
-export class BattleComponent implements OnInit, OnDestroy {
+export class BattleComponent implements OnInit, OnDestroy, AfterViewInit {
     logs: string[] = [];
     private battle: Battle;
+    /*@ViewChild('logsDiv') logsDiv;
+    @ViewChild(NgScrollbar) scrollbarRef: NgScrollbar;*/
 
     constructor(private logger: NGXLogger) { }
 
@@ -25,10 +28,15 @@ export class BattleComponent implements OnInit, OnDestroy {
         );
         this.battle.log = (msg: string) => this.log(msg);
         this.battle.initFight();
+
     }
 
     ngOnDestroy() {
         this.battle.pause(); // security
+    }
+
+    ngAfterViewInit(): void {
+        // this.scrollbarRef.scrollable.elementScrolled().subscribe(e => this.logger.debug(e));
     }
 
     protected log(msg: string) {

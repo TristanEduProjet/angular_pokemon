@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { NgScrollbarModule, SmoothScrollModule } from 'ngx-scrollbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { HomeComponent } from './home.component';
         BrowserModule,
         AppRoutingModule,
         LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.OFF}),
+        NgScrollbarModule, // SmoothScrollModule
         // FormsModule, HttpModule, JsonpModule
     ],
     providers: [],

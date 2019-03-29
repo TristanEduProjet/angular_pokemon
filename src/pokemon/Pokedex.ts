@@ -23,7 +23,7 @@ export class Pokedex {
             });
             return [...currentMoves, ...newMoves];
         }, []);
-        return new Pokemon(tmp.names.fr || tmp.names.en, tmp.base_stats.hp, tmp.base_stats.def, tmp.base_stats.speed, moves, 'Normal');
+        return new Pokemon(id, tmp.names.fr || tmp.names.en, tmp.base_stats.hp, tmp.base_stats.def, tmp.base_stats.speed, moves, 'Normal');
         // .abilities{name hidden*} .move_learnsets[{games learnset[{move level* tm* egg_move*}]}] .types[]
     }
 
