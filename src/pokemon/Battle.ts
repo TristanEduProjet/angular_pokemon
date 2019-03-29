@@ -57,7 +57,7 @@ export class Battle {
     }
 
     pause() {
-        this.log("LAAAAA PPPPPAAAAAUUUUSSSSEEEEEEE");
+        console.log('LAAAAA PPPPPAAAAAUUUUSSSSEEEEEEE');
         this.isPaused = true;
     }
 
